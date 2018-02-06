@@ -145,6 +145,18 @@
 
 - (UIViewController *)demoController
 {
+//
+//    NSString *string = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://distribute.secoo.com/weex/promotionList.js"] encoding:NSUTF8StringEncoding error:nil];
+//    NSString *fileStr = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://distribute.secoo.com/weex/promotionList.js"] encoding:NSUTF8StringEncoding error:nil];
+    NSString *linkStr = @"https://distribute.secoo.com/weex/promotionList.js";
+//
+    NSString *fileToload = nil;
+    fileToload = [[NSBundle mainBundle] pathForResource:@"promotionList" ofType:@"js"];
+//    NSURLResponse *response = [[NSURLResponse alloc] initWithURL:[NSURL URLWithString:linkStr] MIMEType:<#(nullable NSString *)#> expectedContentLength:<#(NSInteger)#> textEncodingName:<#(nullable NSString *)#>];
+//    NSData *data = [NSData dataWithContentsOfFile:fileToload];
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:linkStr]];
+    NSLog(@"print %@",data);
+    
     UIViewController *demo = [[WXDemoViewController alloc] init];
     ((WXDemoViewController *)demo).url = [NSURL URLWithString:BUNDLE_URL];
     return demo;

@@ -346,7 +346,7 @@ exports.default = {
           if (data.retCode == 0) {
             for (var i = 0; i < data.retData.product.length; i++) {
               var product = data.retData.product[i];
-              product.productImage = '//pic12.secooimg.com/product/200/200/' + product.productImage;
+                   product.productImage = 'https://pic12.secooimg.com/product/200/200/' + product.productImage;
               that.productList.push(product);
             }
           }
@@ -355,7 +355,7 @@ exports.default = {
     },
 
     LinKPro: function LinKPro(productId) {
-      // nativeBridge.openWebViewPage({'url':'https://distribute.secoo.com/proDetail.html?pageSource=0&userId='+commonJs.getUrlParam("userId")+'&requestSource=0&productId='+productId})
+//       nativeBridge.openWebViewPage({'url':'https://distribute.secoo.com/proDetail.html?pageSource=0&userId='+commonJs.getUrlParam("userId")+'&requestSource=0&productId='+productId})
     }
   }
 };
