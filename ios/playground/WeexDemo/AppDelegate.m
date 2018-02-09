@@ -56,6 +56,7 @@
     [self.window makeKeyAndVisible];
     
     [self startSplashScreen];
+    [self update];
     
 #if DEBUG
     // check if there are any UI changes on main thread.
@@ -63,6 +64,30 @@
 #endif
     
     return YES;
+}
+
+- (void)update {
+    NSString *url = @"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js";
+    NSURL *URL = [NSURL URLWithString:url];
+    NSString *urllll = @"/Users/secoo/Desktop/WEEX/incubator-weex/ios/playground/bundlejs/yangyonghui.js";
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            NSString *dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectory = [paths objectAtIndex:0];
+            NSError *error;
+            [dataStr writeToFile:urllll atomically:YES encoding:NSUTF8StringEncoding error:&error];
+            NSLog(@"print dataStr %@",dataStr);
+            NSString *str = [documentsDirectory stringByAppendingPathComponent:@"myfile.js"];
+            
+            NSData *data = [NSData dataWithContentsOfFile:str];
+            NSLog(@"print yangyonghui %@",data);
+        }
+        
+    }];
+    [dataTask resume];
 }
 
 -(void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
