@@ -68,8 +68,10 @@
 
 - (void)update {
     NSString *url = @"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js";
+    NSData *data = [NSData dataWithContentsOfFile:BUNDLE_URL];
+    NSLog(@"print data %@",data);
     NSURL *URL = [NSURL URLWithString:url];
-    NSString *urllll = @"/Users/secoo/Desktop/WEEX/incubator-weex/ios/playground/bundlejs/yangyonghui.js";
+    NSString *urllll = @"/Users/secoo/Desktop/WEEX/incubator-weex/ios/playground/bundlejs/test.js";
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -92,6 +94,7 @@
 
 -(void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
 {
+  
     if ([shortcutItem.type isEqualToString:QRSCAN]) {
         WXScannerVC * scanViewController = [[WXScannerVC alloc] init];
         [(WXRootViewController*)self.window.rootViewController pushViewController:scanViewController animated:YES];

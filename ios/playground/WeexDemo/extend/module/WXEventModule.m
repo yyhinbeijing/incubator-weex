@@ -30,6 +30,8 @@ WX_EXPORT_METHOD(@selector(openURL:))
 
 WX_EXPORT_METHOD(@selector(fireNativeGlobalEvent:callback:))
 
+WX_EXPORT_METHOD_SYNC(@selector(getString))
+
 - (void)openURL:(NSString *)url
 {
     NSString *newURL = url;
@@ -48,6 +50,11 @@ WX_EXPORT_METHOD(@selector(fireNativeGlobalEvent:callback:))
     ((WXDemoViewController *)controller).url = [NSURL URLWithString:newURL];
     
     [[weexInstance.viewController navigationController] pushViewController:controller animated:YES];
+}
+
+- (NSString *)getString
+{
+    return @"testString";
 }
 
 

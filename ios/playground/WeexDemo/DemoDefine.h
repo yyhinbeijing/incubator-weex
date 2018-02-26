@@ -31,7 +31,14 @@
 
 #define HOME_URL [NSString stringWithFormat:@"http://%@:8080/examples/build/vue/index.js", DEMO_HOST]
 
-#define BUNDLE_URL @"https://distribute.secoo.com/weex/textNews.js"
+//#define DEMO_URL(path) [NSString stringWithFormat:@"http://%@:12580/%s", DEMO_HOST, #path]
+//
+//#define HOME_URL [NSString stringWithFormat:@"http://%@:12580/examples/build/vue/index.js", DEMO_HOST]
+#define BUNDLE_URL [NSString stringWithFormat:@"file://%@/bundlejs/landing.weex.js",[NSBundle mainBundle].bundlePath]
+
+//#define BUNDLE_URL [NSString stringWithFormat:@"file://%@/bundlejs/landing.weex.js",[NSBundle mainBundle].bundlePath]
+
+//#define BUNDLE_URL @"https://distribute.secoo.com/weex/textNews.js"
 //@"/var/mobile/Containers/Data/Application/168307C2-6FE3-4A5E-8E8A-B816A84575C1/Documents/myfile.js"
 //@"/var/mobile/Containers/Data/Application/88D58F17-DD20-491B-A44E-BA5AB66E472B/Documents/myfile.txt"
 //@"https://distribute.secoo.com/weex/promotionList.js"
